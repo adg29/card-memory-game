@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Card Memory Game Prototype
 
-## Available Scripts
 
-In the project directory, you can run:
+Prototype of a simple memory game. A grid of cards will appear on the screen. The user can click a card to "flip" it over and display an image. When 2 cards of the same image are flipped over, a match is made. To win the game, find all the matching cards.
 
-### `npm start`
+## Prototype Specification
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The prototype will have 2 views. A lobby view and a gameplay view.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Lobby View
+A header in the lobby view will display the text string "Memory Game".
 
-### `npm test`
+The lobby view will have 4 options for the size of the game. These options will be laid out as vertical buttons with a string that describes the size of the grid in the game.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Options are:
+3x4, 5x2, 4x4, and 4x5
 
-### `npm run build`
+When one of the options is selected, the gameplay view opens and the game begins.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Gameplay View
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The gameplay view consists of card images laid out in a grid that matches the size of the selected grid from the lobby view.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When a card is clicked, an image appears. The image appears until another card is clicked. If the second card matches the image of the first card, a match is made and both cards continue to show their matched image. If the images do not match, the incorrect match continues to appears onscreen for 1 second, and then the images are hidden and the card back appears again.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Cards should not be actionable when their image is showing.
+The game continues until all cards are matched. If the user wants to exit the game, a back (previous view) button will be available in the upper left corner of the screen to exit back to the lobby. Once all cards are matched, the user can also exit the game by pressing the back button. 
