@@ -17,7 +17,7 @@ function App() {
     SUMMARY: 'summary'
   }
 
-  const [view, setView] = useState()
+  const [viewOption, setViewOption] = useState(GAME_VIEWS.OPTIONS)
   const [gridSize, setGridSize] = useState(GRID_SIZES[1])
   const [flipped, setFlipped] = useState([])
   const [cards, setCards] = useState([])
@@ -62,7 +62,7 @@ function App() {
         setMatched([...matched, flipped[0], id])
         resetFlipped()
       } else {
-        setTimeout(resetFlipped, 2000)
+        setTimeout(resetFlipped, 1000)
       }
     }
   }
@@ -80,21 +80,48 @@ function App() {
     return matchCondition
   }
 
+  const renderGame = (view) => {
+    let toRender
+    switch (view) {
+      case GAME_VIEWS.OPTIONS:
+        toRender = (
+          <Options
+            GRID_SIZES={GRID_SIZES}
+            setGridSize={setGridSize}
+            GAME_VIEWS={GAME_VIEWS}
+            setViewOption={setViewOption}
+          />
+        )
+        break
+      case GAME_VIEWS.PLAYING:
+        toRender = (
+          <Board
+            cards={cards}
+            flipped={flipped}
+            grid={gridSize}
+            handleClick={handleClick}
+            disabled={disabled}
+            matched={matched}
+          />
+        )
+        break
+      case GAME_VIEWS.SUMMARY:
+      default:
+        toRender = (
+          <Options 
+            GRID_SIZES={GRID_SIZES}
+            setGridSize={setGridSize}
+          />
+        )
+        break
+    }
+
+    return toRender
+  }
 
   return (
     <div className="App">
-      <Options 
-        GRID_SIZES={GRID_SIZES}
-        setGridSize={setGridSize}
-      />
-      <Board
-        cards={cards}
-        flipped={flipped}
-        grid={gridSize}
-        handleClick={handleClick}
-        disabled={disabled}
-        matched={matched}
-      />
+      {renderGame(viewOption)}
     </div>
   );
 }
