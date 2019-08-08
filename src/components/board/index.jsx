@@ -1,13 +1,68 @@
 import React from 'react'
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Card from './../card'
 
-function Board({
-        grid, cards,
-        flipped, disabled, matched,
-        handleClick, setViewOption,
-        GAME_VIEWS
-    }) {
+function Board({ grid, setViewOption, GAME_VIEWS }) {
+
+    const [flipped, setFlipped] = useState([])
+    const [cards, setCards] = useState([])
+    const [matched, setMatched] = useState([])
+    const [disabled, setDisabled] = useState(false)
+
+    const initializeDeck = (cardNames) => {
+    let id = 0
+    let newDeck = cardNames.reduce((deck, name) => {
+            deck.push({
+                id: id++,
+                name
+            })
+            deck.push({
+                id: id++,
+                name
+            })
+            return deck}
+        , [])
+        return newDeck
+    }
+
+    useEffect(() => {
+        const CARD_NAMES = [
+          'Bat', 'Cat', 'Cow',
+          'Dragon', 'GarbageMan', 'GhostDog',
+          'Hen', 'Horse', 'Pig',
+          'Spider'
+        ]
+        setCards(initializeDeck(CARD_NAMES))
+    }, [])
+
+    const handleClick = (id) => {
+        setDisabled(true)
+        if (flipped.length === 0) {
+          setFlipped([id])
+          setDisabled(false)
+        } else {
+          if (flipped.includes(id)) return
+          setFlipped([flipped[0], id])
+          if (isMatch(id)) {
+            setMatched([...matched, flipped[0], id])
+            resetFlipped()
+          } else {
+            setTimeout(resetFlipped, 1000)
+          }
+        }
+    }
+
+    const resetFlipped = () => {
+        setFlipped([])
+        setDisabled(false)
+    }
+
+    const isMatch = (id) => {
+        const cardClicked = cards.find(card => card.id === id)
+        const cardToMatch = cards.find(card => flipped[0] === card.id)
+        let matchCondition = (cardClicked.name === cardToMatch.name)
+        return matchCondition
+    }
 
     const renderDnynamicBoard = ([cols, rows]) => {
         let rowMarkup = []
@@ -47,7 +102,7 @@ function Board({
         <>
             <div
                 onClick={() => {
-                    setViewOption(GAME_VIEWS.OPTIONS)
+                    setViewOption(GAME_VIEWS.LOBBY)
                 }}
             >
                 <img
