@@ -25,3 +25,9 @@ When a card is clicked, an image appears. The image appears until another card i
 
 Cards should not be actionable when their image is showing.
 The game continues until all cards are matched. If the user wants to exit the game, a back (previous view) button will be available in the upper left corner of the screen to exit back to the lobby. Once all cards are matched, the user can also exit the game by pressing the back button. 
+
+
+### References
+CSS Flexbox Grid 
+- https://stackoverflow.com/questions/29307971/css-grid-of-squares-with-flexbox
+- https://codepen.io/adg29/pen/bXMpqY
