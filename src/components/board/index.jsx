@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from './../card'
 
 function Board({ grid, cards, flipped, handleClick}) {
-    console.log(cards)
+    // backNavButton@2x  
 
     const renderDnynamicBoard = ([cols, rows]) => {
         let rowMarkup = []

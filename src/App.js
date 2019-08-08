@@ -3,19 +3,6 @@ import Card from './components/card'
 import Board from './components/board'
 import './App.css'
 
-/*
-memoryBatCardFront@2x.png
-memoryCatCardFront@2x.png
-memoryCowCardFront@2x.png
-memoryDragonFront@2x.png
-memoryGarbageManCardFront@2x.png
-memoryGhostDogCardFront@2x.png
-memoryHenCardFront@2x.png
-memoryHorseCardFront@2x.png
-memoryPigCardFront@2x.png
-memorySpiderCardFront@2x.png
-*/
-
 function App() {
   const CARD_NAMES = [
     'Bat', 'Cat', 'Cow',

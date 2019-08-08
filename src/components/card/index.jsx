@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-function Card({ id, front, width, height}) {
+function Card({ id, back , width, height}) {
+    const front = `/img/allCardBacks@2x.png`
     return (
         <div
             className="flex-item"
