@@ -26,8 +26,8 @@ function Board({
                           front={`/img/memory${cards[cols * y + x].name}CardFront@2x.png`}
                           flipped={flipped.includes(cards[cols * y + x].id)}
                           handleClick={() => handleClick(cards[cols * y + x].id)}
-                          disabled={disabled}
-                          matched={disabled || matched}
+                          disabled={disabled || matched.includes(cards[cols * y + x].id)}
+                          matched={matched.includes(cards[cols * y + x].id)}
                         />
                 )
                 row.push(col)

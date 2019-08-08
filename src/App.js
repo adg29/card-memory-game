@@ -80,6 +80,7 @@ function App() {
         grid={GRID_SIZES[1]}
         handleClick={handleClick}
         disabled={disabled}
+        matched={matched}
       />
     </div>
   );
