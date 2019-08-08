@@ -48,7 +48,8 @@ function App() {
       <Board
         cards={cards}
         flipped={flipped}
-        grid={GRID_SIZES[2]}
+        grid={GRID_SIZES[1]}
+        handleClick={handleClick}
       />
     </div>
   );

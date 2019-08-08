@@ -7,29 +7,28 @@ function Board({ grid, cards, flipped, handleClick}) {
     const renderDnynamicBoard = ([cols, rows]) => {
         let rowMarkup = []
         console.log(`Building board with ${cols} cols and ${rows} rows`)
-        console.log(cards)
         for(let y = 0; y < rows; y++) {
             let row = []
             for(let x = 0; x < cols; x++) {
-                console.log(cards[x])
+                console.log(`${x},${y} card${x}`, cards[cols * y + x])
                 let col = (
-                    <div class="flex-item">
+                    <div className="flex-item" key={`x${x}y{y}`}>
                         <Card
-                          key={cards[x].id}
-                          id={cards[x].id}
-                          name={cards[x].name}
+                          key={cards[cols * y + x].id}
+                          id={cards[cols * y + x].id}
+                          name={cards[cols * y + x].name}
                           width={100}
                           height={100}
-                          front={`/img/memory${cards[x].name}CardFront@2x.png`}
-                          flipped={flipped.includes(cards[x].id)}
-                          handleClick={() => handleClick(cards[x].id)}
+                          front={`/img/memory${cards[cols * y + x].name}CardFront@2x.png`}
+                          flipped={flipped.includes(cards[cols * y + x].id)}
+                          handleClick={() => handleClick(cards[cols * y + x].id)}
                         />
                     </div>
                 )
                 row.push(col)
             }
             rowMarkup.push(
-                <div className="flex-container">
+                <div className="flex-container" key={`row${rowMarkup.length+1}`}>
                     {row}
                 </div>
             )
