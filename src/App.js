@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Options from './components/options'
 import Board from './components/board'
 import './App.css'
 
@@ -10,6 +11,14 @@ function App() {
     [4,5]
   ]
 
+  const GAME_VIEWS = {
+    OPTIONS: 'options',
+    PLAYING: 'playing',
+    SUMMARY: 'summary'
+  }
+
+  const [view, setView] = useState()
+  const [gridSize, setGridSize] = useState(GRID_SIZES[1])
   const [flipped, setFlipped] = useState([])
   const [cards, setCards] = useState([])
   const [matched, setMatched] = useState([])
@@ -74,10 +83,14 @@ function App() {
 
   return (
     <div className="App">
+      <Options 
+        GRID_SIZES={GRID_SIZES}
+        setGridSize={setGridSize}
+      />
       <Board
         cards={cards}
         flipped={flipped}
-        grid={GRID_SIZES[1]}
+        grid={gridSize}
         handleClick={handleClick}
         disabled={disabled}
         matched={matched}
