@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 function Card({ id, front, width, height}) {
     return (
         <div
+            className="flex-item"
             style={{
                 height, width
             }}

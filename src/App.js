@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Card from './components/card'
+import Board from './components/board'
 import './App.css'
 
 /*
@@ -22,6 +23,14 @@ function App() {
     'Hen', 'Horse', 'Pig',
     'Spider'
   ]
+
+  const GRID_SIZES = [
+    [3,4],
+    [5,2],
+    [4,4],
+    [4,5]
+  ]
+
   const [flipped, setFlipped] = useState([])
   const [cards, setCards] = useState([])
 
@@ -49,18 +58,11 @@ function App() {
 
   return (
     <div className="App">
-      {cards.map(card => (
-        <Card
-          key={card.id}
-          id={card.id}
-          name={card.name}
-          width={100}
-          height={100}
-          front={`/img/memory${card.name}CardFront@2x.png`}
-          flipped={flipped.includes(card.id)}
-          handleClick={() => handleClick(card.id)}
-        />
-      ))}
+      <Board
+        cards={cards}
+        flipped={flipped}
+        grid={GRID_SIZES[2]}
+      />
     </div>
   );
 }
