@@ -3,10 +3,11 @@ import React from 'react'
 import Card from './../card'
 
 function Board({
-    grid, cards,
-    flipped, disabled, matched,
-    handleClick}) {
-    // backNavButton@2x  
+        grid, cards,
+        flipped, disabled, matched,
+        handleClick, setViewOption,
+        GAME_VIEWS
+    }) {
 
     const renderDnynamicBoard = ([cols, rows]) => {
         let rowMarkup = []
@@ -43,11 +44,24 @@ function Board({
     }
 
     return (
-        <div
-            className="board"
-        >
-            {cards.length > 0 && renderDnynamicBoard(grid)}
-        </div>
+        <>
+            <div
+                onClick={() => {
+                    setViewOption(GAME_VIEWS.OPTIONS)
+                }}
+            >
+                <img
+                    className={`backToLobby`}
+                    src={`/img/backNavButton@2x.png`}
+                    alt={`Back to Lobby`}
+                />
+            </div>
+            <div
+                className="board"
+            >
+                {cards.length > 0 && renderDnynamicBoard(grid)}
+            </div>
+        </>
     )
 }
 

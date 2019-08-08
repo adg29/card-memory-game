@@ -102,6 +102,8 @@ function App() {
             handleClick={handleClick}
             disabled={disabled}
             matched={matched}
+            GAME_VIEWS={GAME_VIEWS}
+            setViewOption={setViewOption}
           />
         )
         break
