@@ -4,9 +4,6 @@ import React from 'react'
 function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, setViewOption }) {
     return (
         <>
-        <h1>
-            Memory Game
-        </h1>
         <div
             className={`options `}
         >

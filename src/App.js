@@ -45,10 +45,10 @@ function App() {
       case GAME_VIEWS.SUMMARY:
       default:
         toRender = (
-          <Options 
-            GRID_SIZES={GRID_SIZES}
-            setGridSize={setGridSize}
-          />
+          <div
+          >
+            You win!
+          </div>
         )
         break
     }
@@ -58,6 +58,31 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <ul className="elements">
+          <li className="back">
+            {(viewOption !== GAME_VIEWS.LOBBY) && (
+              <div
+                onClick={() => {
+                    setViewOption(GAME_VIEWS.LOBBY)
+                }}
+              >
+                <img
+                    className={`backToLobby`}
+                    src={`/img/backNavButton@2x.png`}
+                    alt={`Back to Lobby`}
+                />
+              </div>
+            )}
+          </li>
+          <li className="title">
+            <h1>
+                Memory Game
+            </h1>
+          </li>
+        </ul>
+      </header>
+
       {renderGame(viewOption)}
     </div>
   );
