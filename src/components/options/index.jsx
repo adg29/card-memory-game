@@ -26,12 +26,12 @@ function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, setViewOption }) {
                                 setViewOption(GAME_VIEWS.PLAYING)
                             }}
                         >
-                            <div class="ui animated fade button" tabindex="0">
+                            <div className="ui animated fade button">
                                 <div className="visible content">
                                     {size.join('x')}
                                 </div>
                                 <div className="hidden content">
-                                      <i class="play icon"></i>
+                                      <i className="play icon"></i>
                                         {size.join('x')}
                                 </div>
                             </div>

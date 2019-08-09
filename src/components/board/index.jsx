@@ -121,20 +121,42 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
                 )
                 row.push(col)
             }
-            rowMarkup.push(
-                <div className="flex-container" key={`row${rowMarkup.length+1}`}>
-                    {row}
-                </div>
-            )
+            rowMarkup.push(row)
+            {/*<div className="flex-container" key={`row${rowMarkup.length+1}`}>*/}
+                // {row}
+            // </div>
         }
 
         return rowMarkup
     }
 
+    const getColumnsClassName = (columnsInt) => {
+        let columnsClassName;
+        switch (columnsInt) {
+            case 3:
+                columnsClassName = "three"
+                break;
+            case 4:
+                columnsClassName = "four"
+                break;
+            case 5:
+                columnsClassName = "five"
+                break;
+            default:
+                columnsClassName = "five"
+                break;
+        }
+
+        return columnsClassName
+    }
+
     return (
         <>
             <div
-                className="board"
+                className={`
+                    ui centered board 
+                    ${getColumnsClassName(grid[0])} cards
+                `}
             >
                 {cards.length > 0 && renderDnynamicBoard(grid)}
             </div>
