@@ -1,3 +1,4 @@
+import 'semantic-ui-css/semantic.min.css'
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
@@ -45,10 +46,13 @@ function App() {
       case GAME_VIEWS.SUMMARY:
       default:
         toRender = (
-          <div
-          >
-            You win!
-          </div>
+          <h2 className="ui icon header">
+            <i className="thumbs up outline icon"></i>
+            <div className="content">
+              Finished!
+              <div className="sub header">You matched all the cards!<br/>Good memory!</div>
+            </div>
+          </h2>        
         )
         break
     }
@@ -58,31 +62,26 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <ul className="elements">
-          <li className="back">
-            {(viewOption !== GAME_VIEWS.LOBBY) && (
-              <div
-                onClick={() => {
-                    setViewOption(GAME_VIEWS.LOBBY)
-                }}
-              >
-                <img
-                    className={`backToLobby`}
-                    src={`/img/backNavButton@2x.png`}
-                    alt={`Back to Lobby`}
-                />
-              </div>
-            )}
-          </li>
-          <li className="title">
-            <h1>
-                Memory Game
-            </h1>
-          </li>
-        </ul>
-      </header>
-
+      <div className="ui huge borderless stackable menu">
+        <div className="item">
+          {(viewOption !== GAME_VIEWS.LOBBY) && (
+              <i
+                  className={`huge icon backToLobby`}
+                  onClick={() => {
+                      setViewOption(GAME_VIEWS.LOBBY)
+                  }}
+              ></i>
+          )}
+          {(viewOption === GAME_VIEWS.LOBBY) && (
+            <i className="th huge icon"></i>
+          )}
+        </div>
+        <a className="item">
+        <span className="ui header">
+        Memory Game
+        </span>
+        </a>
+      </div>
       {renderGame(viewOption)}
     </div>
   );

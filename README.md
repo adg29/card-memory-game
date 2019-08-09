@@ -33,6 +33,10 @@ The game continues until all cards are matched. If the user wants to exit the ga
 - https://stackoverflow.com/questions/29307971/css-grid-of-squares-with-flexbox
 - https://codepen.io/adg29/pen/bXMpqY
 
+#### Backgrounds
+
+https://components.ai/gradients
+
 #### Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

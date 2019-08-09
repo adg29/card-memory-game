@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+i.backToLobby{
+  background-image: url(/img/backNavButton@2x.png);
+  background-size: cover;
+}
+
+i.th {
+  color: #3290C4;
+}
+
 header .elements{
   display: flex;
   justify-content: center;
