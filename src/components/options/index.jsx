@@ -1,26 +1,45 @@
 import React from 'react'
-// import { useState, useEffect } from 'react'
 
 function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, setViewOption }) {
     return (
-        <>
-        <div
-            className={`options `}
-        >
-            {GRID_SIZES.map(size => 
+        <div className="ui middle aligned center aligned grid">
+            <div className={`column`}>
+
+                <h2 className="ui icon header">
+                    <i className="keyboard outline icon"></i>
+                    <div className="content">
+                        Board Size Options
+                    </div>
+                </h2>        
+
+
                 <div
-                    key={size.join('x')}
-                    className={`flex-item`}
-                    onClick={() => {
-                        setGridSize(size)
-                        setViewOption(GAME_VIEWS.PLAYING)
-                    }}
+                    className={`centered one link cards`}
                 >
-                    {size.join('x')}
+                    {GRID_SIZES.map(size => 
+
+                        <div
+                            key={size.join('x')}
+                            className={`ui raised centered card`}
+                            onClick={() => {
+                                setGridSize(size)
+                                setViewOption(GAME_VIEWS.PLAYING)
+                            }}
+                        >
+                            <div class="ui animated fade button" tabindex="0">
+                                <div className="visible content">
+                                    {size.join('x')}
+                                </div>
+                                <div className="hidden content">
+                                      <i class="play icon"></i>
+                                        {size.join('x')}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
-        </>
     )
 }
 

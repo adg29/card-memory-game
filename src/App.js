@@ -50,7 +50,7 @@ function App() {
             <i className="thumbs up outline icon"></i>
             <div className="content">
               Finished!
-              <div className="sub header">You matched all the cards!<br/>Good memory!</div>
+              <div className="sub header">You matched all the cards,<br/>Good memory!</div>
             </div>
           </h2>        
         )
