@@ -10,8 +10,8 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     const [disabled, setDisabled] = useState(false)
 
     const initializeDeck = (cardNames) => {
-    let id = 0
-    let newDeck = cardNames.reduce((deck, name) => {
+        let id = 0
+        let newDeck = cardNames.reduce((deck, name) => {
             deck.push({
                 id: id++,
                 name
@@ -40,10 +40,10 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
         if (flipped.length === 0) {
           setFlipped([id])
           setDisabled(false)
-        } else {
-          if (flipped.includes(id)) return
+        } else if (!flipped.includes(id)){
           setFlipped([flipped[0], id])
           if (isMatch(id)) {
+            // console.log('matched currently', matched)
             setMatched([...matched, flipped[0], id])
             resetFlipped()
           } else {
@@ -51,6 +51,13 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
           }
         }
     }
+
+    useEffect(() => {
+        if (matched.length > 0 && matched.length === (grid[0] * grid[1])) {
+            // console.log('setMatched', matched, grid)
+            setViewOption(GAME_VIEWS.SUMMARY)
+        }
+    }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption])
 
     const resetFlipped = () => {
         setFlipped([])
@@ -74,13 +81,13 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
                 let col = (
                         <Card
                           key={cards[cols * y + x].id}
-                          xy={`x${x}y{y}`}
+                          xy={`x${x}y${y}`}
                           id={cards[cols * y + x].id}
                           name={cards[cols * y + x].name}
                           width={100}
                           height={100}
                           front={`/img/memory${cards[cols * y + x].name}CardFront@2x.png`}
-                          handleClick={() => handleClick(cards[cols * y + x].id)}
+                          handleClick={handleClick}
                           flipped={flipped.includes(cards[cols * y + x].id)}
                           disabled={disabled || matched.includes(cards[cols * y + x].id)}
                           matched={matched.includes(cards[cols * y + x].id)}
@@ -100,17 +107,6 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
 
     return (
         <>
-            <div
-                onClick={() => {
-                    setViewOption(GAME_VIEWS.LOBBY)
-                }}
-            >
-                <img
-                    className={`backToLobby`}
-                    src={`/img/backNavButton@2x.png`}
-                    alt={`Back to Lobby`}
-                />
-            </div>
             <div
                 className="board"
             >
