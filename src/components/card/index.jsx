@@ -1,4 +1,6 @@
 import React from 'react'
+import ReactCardFlip from 'react-card-flip';
+
 
 function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, width, height}) {
     const back = `/img/allCardBacks@2x.png`
@@ -8,27 +10,20 @@ function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, w
             onClick={() => disabled? null : handleClick(id)}
             data-xy={`${xy}`}
         >
-{/*
-            <div className={`ui move reveal disabled ${flipped ? 'back': 'front'}`}>
-              <div className="visible content">
-                <img src={front} className="ui small image" />
-              </div>
-              <div className="hidden content">
-                <img src={back} className="ui small image" />
-              </div>
-            </div>
-
-*/}
             <div className="image">
-                <img 
-                    className={flipped ? 'back': 'front'}
-                    src={flipped || matched ? front : back}
-                    alt={flipped ? name : `?`}
-                />
+                <ReactCardFlip 
+                    className={`centered ${flipped || matched ? 'back': 'front'}`}
+                    isFlipped={flipped || matched} 
+                    flipDirection="vertical"
+                >
+                    <img key="front" src={back} className="ui medium centered image" alt="?" />
+                    <img key="back" src={front} className="ui medium centered image" alt={name} />
+                </ReactCardFlip>
+
             </div>
 
             <div className="content">
-                <a className="header">{flipped || matched ? name : '\u00A0'}</a>
+                <span className="header">{flipped || matched ? name : '\u00A0'}</span>
             </div>
         </div>
     )
