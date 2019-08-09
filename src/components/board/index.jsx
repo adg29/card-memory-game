@@ -9,6 +9,32 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     const [matched, setMatched] = useState([])
     const [disabled, setDisabled] = useState(false)
 
+    /**
+     * Randomly shuffle an array
+     * https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
+     * https://stackoverflow.com/a/2450976/1293256
+     */
+    var shuffle = function (array) {
+
+        var currentIndex = array.length;
+        var temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+
+    };
+
     const initializeDeck = (cardNames) => {
         let id = 0
         let newDeck = cardNames.reduce((deck, name) => {
@@ -22,7 +48,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
             })
             return deck}
         , [])
-        return newDeck
+        return shuffle(newDeck)
     }
 
     useEffect(() => {
@@ -32,7 +58,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
           'Hen', 'Horse', 'Pig',
           'Spider'
         ]
-        setCards(initializeDeck(CARD_NAMES))
+        setCards(initializeDeck(shuffle(CARD_NAMES).slice(0, (grid[0] * grid[1]) / 2 )))
     }, [])
 
     const handleClick = (id) => {
