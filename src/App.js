@@ -76,7 +76,7 @@ function App() {
             <i className="th huge icon"></i>
           )}
         </div>
-        <a className="item">
+        <a className="item" href="/">
         <span className="ui header">
         Memory Game
         </span>

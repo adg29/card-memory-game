@@ -35,22 +35,6 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
 
     };
 
-    const initializeDeck = (cardNames) => {
-        let id = 0
-        let newDeck = cardNames.reduce((deck, name) => {
-            deck.push({
-                id: id++,
-                name
-            })
-            deck.push({
-                id: id++,
-                name
-            })
-            return deck}
-        , [])
-        return shuffle(newDeck)
-    }
-
     useEffect(() => {
         const CARD_NAMES = [
           'Bat', 'Cat', 'Cow',
@@ -58,8 +42,25 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
           'Hen', 'Horse', 'Pig',
           'Spider'
         ]
+
+        const initializeDeck = (cardNames) => {
+            let id = 0
+            let newDeck = cardNames.reduce((deck, name) => {
+                deck.push({
+                    id: id++,
+                    name
+                })
+                deck.push({
+                    id: id++,
+                    name
+                })
+                return deck}
+            , [])
+            return shuffle(newDeck)
+        }
+
         setCards(initializeDeck(shuffle(CARD_NAMES).slice(0, (grid[0] * grid[1]) / 2 )))
-    }, [])
+    }, [grid])
 
     const handleClick = (id) => {
         setDisabled(true)
@@ -69,19 +70,21 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
         } else if (!flipped.includes(id)){
           setFlipped([flipped[0], id])
           if (isMatch(id)) {
-            // console.log('matched currently', matched)
             setMatched([...matched, flipped[0], id])
             resetFlipped()
           } else {
             setTimeout(resetFlipped, 1000)
           }
+        } else {
+            setDisabled(false)
         }
     }
 
     useEffect(() => {
         if (matched.length > 0 && matched.length === (grid[0] * grid[1])) {
-            // console.log('setMatched', matched, grid)
-            setViewOption(GAME_VIEWS.SUMMARY)
+            setTimeout(() => {
+               setViewOption(GAME_VIEWS.SUMMARY)
+            }, 2000)
         }
     }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption])
 
@@ -99,11 +102,9 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
 
     const renderDnynamicBoard = ([cols, rows]) => {
         let rowMarkup = []
-        // console.log(`Building board with ${cols} cols and ${rows} rows`)
         for(let y = 0; y < rows; y++) {
             let row = []
             for(let x = 0; x < cols; x++) {
-                // console.log(`${x},${y} card${x}`, cards[cols * y + x])
                 let col = (
                         <Card
                           key={cards[cols * y + x].id}
@@ -122,9 +123,15 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
                 row.push(col)
             }
             rowMarkup.push(row)
-            {/*<div className="flex-container" key={`row${rowMarkup.length+1}`}>*/}
-                // {row}
-            // </div>
+            /*
+            // This markup was being used to build a resposive board using flex-conatiner rows and flex item columns/cells
+            // Ultimately, decided to go with Semantic UI convention
+            (
+                <div className="flex-container" key={`row${rowMarkup.length+1}`}>
+                  {row}
+                </div>
+            )
+            */
         }
 
         return rowMarkup
