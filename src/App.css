@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+header .elements{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 30vh;
+  padding: 0;
+  list-style: none;
+}
+
+header .title{
+  margin-left: auto;
+  margin-right: auto/*this will push aside the other flex-items and the bird takes the remaining space!*/
+}
+
+header .back img{
+    max-height: 20vh;
+}
+
+
 .flex-container {
     padding: 0;
     margin: 0;
@@ -31,3 +50,4 @@
     float:left;
     padding-top:100%;
 }
+
