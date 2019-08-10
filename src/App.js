@@ -1,4 +1,4 @@
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.css';
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
