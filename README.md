@@ -37,7 +37,7 @@ The game continues until all cards are matched. If the user wants to exit the ga
 
 https://github.com/AaronCCWong/react-card-flip
 
-### CSS UI for Cards
+#### CSS UI for Cards
 
 https://semantic-ui.com/views/card.html
 
@@ -46,7 +46,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-#### `npm start`
+##### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
