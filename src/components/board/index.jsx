@@ -158,7 +158,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     }
 
     return (
-        <div className="ui raised very padded text container segment">
+        <div className="ui raised text container segment">
                 <div
                     className={`
                         ui centered board 
