@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactCardFlip from 'react-card-flip';
+var ReactFitText = require('react-fittext');
 
 
 function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, width, height}) {
@@ -21,15 +22,26 @@ function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, w
                 </ReactCardFlip>
 
             </div>
-
+            <ReactFitText compressor={.5}>
+                <h4>
+                {(flipped || matched) ? name : '\u00A0'}
+                </h4>
+            </ReactFitText>
+{/*
                 {(flipped || matched) && 
-                    (<a className="ui teal pointing label">{name}</a>)
+                    (
+                        <a className="ui teal pointing label">
+                        {name}
+                        </a>
+                    )
 
                 }
                 {(!flipped && !matched) && 
                     (<a className="ui transparent pointing label">{'\u00A0'}</a>)
 
                 }
+
+*/}        
         </div>
     )
 }

@@ -6,6 +6,7 @@
     "react": "^16.8.6",
     "react-card-flip": "^0.8.1",
     "react-dom": "^16.8.6",
+    "react-fittext": "^1.0.0",
     "react-scripts": "3.0.1",
     "semantic-ui-css": "^2.4.1"
   },
