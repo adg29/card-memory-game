@@ -158,16 +158,16 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     }
 
     return (
-        <>
-            <div
-                className={`
-                    ui centered board 
-                    ${getColumnsClassName(grid[0])} cards
-                `}
-            >
-                {cards.length > 0 && renderDnynamicBoard(grid)}
-            </div>
-        </>
+        <div className="ui raised very padded text container segment">
+                <div
+                    className={`
+                        ui centered board 
+                        ${getColumnsClassName(grid[0])} cards
+                    `}
+                >
+                    {cards.length > 0 && renderDnynamicBoard(grid)}
+                </div>
+        </div>
     )
 }
 

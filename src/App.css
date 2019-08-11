@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body .ui.cards>.card{
+  box-shadow: none;
+}
+
+
 i.backToLobby{
   background-image: url(/img/backNavButton@2x.png);
   background-size: cover;

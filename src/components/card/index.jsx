@@ -6,7 +6,7 @@ function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, w
     const back = `/img/allCardBacks@2x.png`
     return (
         <div
-            className={`ui fluid raised card ${name}${id}  ${flipped ? 'flipped': ''}`}
+            className={`ui card borderless ${name}${id}  ${flipped ? 'flipped': ''}`}
             onClick={() => disabled? null : handleClick(id)}
             data-xy={`${xy}`}
         >
@@ -22,9 +22,14 @@ function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, w
 
             </div>
 
-            <div className="content">
-                <span className="header">{flipped || matched ? name : '\u00A0'}</span>
-            </div>
+                {(flipped || matched) && 
+                    (<a className="ui teal pointing label">{name}</a>)
+
+                }
+                {(!flipped && !matched) && 
+                    (<a className="ui transparent pointing label">{'\u00A0'}</a>)
+
+                }
         </div>
     )
 }
