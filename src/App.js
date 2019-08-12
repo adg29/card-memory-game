@@ -95,9 +95,15 @@ function App({ history }) {
       </div>
 
 
-      <Route exact path="/" render={() => renderGame(GAME_VIEWS.LOBBY) } />
-      <Route path="/lobby" render={() => renderGame(GAME_VIEWS.LOBBY) } />
-      <Route path="/playing" component={() => {
+      <Route exact path="/" render={() => {
+        setViewOption(GAME_VIEWS.LOBBY)
+        return renderGame(GAME_VIEWS.LOBBY) 
+      }} />
+      <Route path="/lobby" render={() => {
+        setViewOption(GAME_VIEWS.LOBBY)
+        return renderGame(GAME_VIEWS.LOBBY) 
+      }} />
+      <Route path="/playing" render={() => {
         setViewOption(GAME_VIEWS.PLAYING)
         return renderGame(GAME_VIEWS.PLAYING) 
       }} />
