@@ -41,6 +41,11 @@ https://github.com/AaronCCWong/react-card-flip
 
 https://semantic-ui.com/views/card.html
 
+
+#### CSS Staggered Animation
+
+https://codepen.io/lenymo/pen/qozOWa
+
 #### Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
