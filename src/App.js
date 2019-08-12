@@ -1,8 +1,9 @@
 import 'semantic-ui-css/semantic.css';
+import './App.css'
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
-import './App.css'
+import { Route, historyPush } from "./router-diy"
 
 function App() {
   const GRID_SIZES = [
@@ -30,6 +31,7 @@ function App() {
             GRID_SIZES={GRID_SIZES}
             setGridSize={setGridSize}
             GAME_VIEWS={GAME_VIEWS}
+            viewOptions={viewOption}
             setViewOption={setViewOption}
           />
         )
@@ -69,6 +71,7 @@ function App() {
                   className={`huge icon backToLobby`}
                   onClick={() => {
                       setViewOption(GAME_VIEWS.LOBBY)
+                      historyPush('/lobby')
                   }}
               ></i>
           )}
@@ -82,7 +85,12 @@ function App() {
         </span>
         </a>
       </div>
-      {renderGame(viewOption)}
+
+
+      <Route exact path="/" render={() => renderGame(GAME_VIEWS.LOBBY)} />
+      <Route path="/lobby" component={() => renderGame(GAME_VIEWS.LOBBY)} />
+      <Route path="/playing" render={() => renderGame(GAME_VIEWS.PLAYING)} />
+      <Route path="/summary" render={() => renderGame(GAME_VIEWS.SUMMARY)} />
     </div>
   );
 }

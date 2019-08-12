@@ -1,6 +1,7 @@
 import React from 'react'
+import { historyPush } from "./../../router-diy"
 
-function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, setViewOption }) {
+function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, viewOption, setViewOption }) {
     return (
         <div className="ui middle aligned center aligned grid">
             <div className={`column`}>
@@ -18,24 +19,25 @@ function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, setViewOption }) {
                 >
                     {GRID_SIZES.map(size => 
 
-                        <div
-                            key={size.join('x')}
-                            className={`ui raised centered card`}
-                            onClick={() => {
-                                setGridSize(size)
-                                setViewOption(GAME_VIEWS.PLAYING)
-                            }}
-                        >
-                            <div className="ui animated fade button">
-                                <div className="visible content">
-                                    {size.join('x')}
-                                </div>
-                                <div className="hidden content">
-                                      <i className="play icon"></i>
+                            <div
+                                key={size.join('x')}
+                                className={`ui raised centered card`}
+                                onClick={() => {
+                                    setGridSize(size)
+                                    setViewOption(GAME_VIEWS.PLAYING)
+                                    historyPush('/playing')
+                                }}
+                            >
+                                <div className="ui animated fade button">
+                                    <div className="visible content">
                                         {size.join('x')}
+                                    </div>
+                                    <div className="hidden content">
+                                          <i className="play icon"></i>
+                                            {size.join('x')}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     )}
                 </div>
             </div>

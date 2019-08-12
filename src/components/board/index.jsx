@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { historyPush } from "./../../router-diy"
 import Card from './../card'
 
 function Board({ grid, setViewOption, GAME_VIEWS }) {
@@ -86,6 +87,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
             setMatchedAll(true)
             setTimeout(() => {
                setViewOption(GAME_VIEWS.SUMMARY)
+               historyPush('/summary')
             }, 2000)
         }
     }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption, setMatchedAll])

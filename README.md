@@ -29,6 +29,9 @@ The game continues until all cards are matched. If the user wants to exit the ga
 
 ### References
 
+#### React DIY Router
+https://tylermcginnis.com/build-your-own-react-router-v4/
+
 #### CSS Flexbox Grid 
 - https://stackoverflow.com/questions/29307971/css-grid-of-squares-with-flexbox
 - https://codepen.io/adg29/pen/bXMpqY
