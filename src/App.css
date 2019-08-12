@@ -135,35 +135,35 @@ i {
 @-webkit-keyframes pulse {
   0% {
     background: #F2622E;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1) translate3d(0px, 0px, 0px);
+            transform: scale(1) translate3d(0px, 0px, 0px);
   }
   25% {
     background: #b0b0cb;
-    -webkit-transform: scale(1.015);
-            transform: scale(1.015);
+    -webkit-transform: scale(.015) translate3d(0px, 0px, 0px);
+            transform: scale(.015) translate3d(0px, 0px, 0px);
   }
   50% {
     background: #F2622E;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1) translate3d(0px, 0px, 0px);
+            transform: scale(1) translate3d(0px, 0px, 0px);
   }
 }
 
 @keyframes pulse {
   0% {
     background: #F2622E;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1) translate3d(0px, 0px, 0px);
+            transform: scale(1) translate3d(0px, 0px, 0px);
   }
   25% {
     background: #b0b0cb;
-    -webkit-transform: scale(.015);
-            transform: scale(.015);
+    -webkit-transform: scale(.015) translate3d(0px, 0px, 0px);
+            transform: scale(.015) translate3d(0px, 0px, 0px);
   }
   50% {
     background: #F2622E;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1) translate3d(0px, 0px, 0px);
+            transform: scale(1) translate3d(0px, 0px, 0px);
   }
 }
