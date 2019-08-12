@@ -1,9 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { historyPush } from "./../../router-diy"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { withRouter } from 'react-router-dom'
 import Card from './../card'
 
-function Board({ grid, setViewOption, GAME_VIEWS }) {
+function Board({ grid, setViewOption, GAME_VIEWS, history }) {
+
+    if (!grid) {
+      window.setTimeout(() => {
+        setViewOption(GAME_VIEWS.LOBBY)
+        history.push('/lobby')
+      }, 0)
+    }
 
     const [flipped, setFlipped] = useState([])
     const [cards, setCards] = useState([])
@@ -87,7 +95,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
             setMatchedAll(true)
             setTimeout(() => {
                setViewOption(GAME_VIEWS.SUMMARY)
-               historyPush('/summary')
+               history.push('/summary')
             }, 2000)
         }
     }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption, setMatchedAll])
@@ -176,4 +184,4 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     )
 }
 
-export default Board
+export default withRouter(Board)

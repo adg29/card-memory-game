@@ -17,6 +17,7 @@ function Card({ name, id, xy, front , flipped, matched, disabled, handleClick, w
                         className={`centered ${flipped || matched ? 'back': 'front'}`}
                         isFlipped={flipped || matched} 
                         flipDirection="vertical"
+                        cardZIndex="100"
                     >
                         <img key="front" src={back} className="ui medium centered image" alt="?" />
                         <img key="back" src={front} className="ui medium centered image" alt={name} />

@@ -3,9 +3,11 @@ import './App.css'
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
-import { Route, historyPush } from "./router-diy"
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-function App() {
+
+function App({ history }) {
   const GRID_SIZES = [
     [3,4],
     [5,2],
@@ -70,8 +72,8 @@ function App() {
               <i
                   className={`huge icon backToLobby`}
                   onClick={() => {
-                      setViewOption(GAME_VIEWS.LOBBY)
-                      historyPush('/lobby')
+                    setViewOption(GAME_VIEWS.LOBBY)
+                    history.push('/lobby')
                   }}
               ></i>
           )}
@@ -87,12 +89,15 @@ function App() {
       </div>
 
 
-      <Route exact path="/" render={() => renderGame(GAME_VIEWS.LOBBY)} />
-      <Route path="/lobby" component={() => renderGame(GAME_VIEWS.LOBBY)} />
-      <Route path="/playing" render={() => renderGame(GAME_VIEWS.PLAYING)} />
-      <Route path="/summary" render={() => renderGame(GAME_VIEWS.SUMMARY)} />
+      <Route exact path="/" render={() => renderGame(GAME_VIEWS.LOBBY) } />
+      <Route path="/lobby" render={() => renderGame(GAME_VIEWS.LOBBY) } />
+      <Route path="/playing" component={() => {
+        setViewOption(GAME_VIEWS.PLAYING)
+        return renderGame(GAME_VIEWS.PLAYING) 
+      }} />
+      <Route path="/summary" render={() => renderGame(GAME_VIEWS.SUMMARY) } />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App)

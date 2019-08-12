@@ -1,7 +1,7 @@
 import React from 'react'
-import { historyPush } from "./../../router-diy"
+import { withRouter } from 'react-router-dom'
 
-function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, viewOption, setViewOption }) {
+function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, viewOption, setViewOption, history }) {
     return (
         <div className="ui middle aligned center aligned grid">
             <div className={`column`}>
@@ -25,7 +25,7 @@ function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, viewOption, setViewOptio
                                 onClick={() => {
                                     setGridSize(size)
                                     setViewOption(GAME_VIEWS.PLAYING)
-                                    historyPush('/playing')
+                                    history.push('/playing')
                                 }}
                             >
                                 <div className="ui animated fade button">
@@ -45,4 +45,4 @@ function Options({ GRID_SIZES, setGridSize, GAME_VIEWS, viewOption, setViewOptio
     )
 }
 
-export default Options
+export default withRouter(Options)
