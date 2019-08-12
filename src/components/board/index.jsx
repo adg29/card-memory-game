@@ -7,6 +7,7 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
     const [flipped, setFlipped] = useState([])
     const [cards, setCards] = useState([])
     const [matched, setMatched] = useState([])
+    const [matchedAll, setMatchedAll] = useState(false)
     const [disabled, setDisabled] = useState(false)
 
     /**
@@ -82,11 +83,12 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
 
     useEffect(() => {
         if (matched.length > 0 && matched.length === (grid[0] * grid[1])) {
+            setMatchedAll(true)
             setTimeout(() => {
                setViewOption(GAME_VIEWS.SUMMARY)
             }, 2000)
         }
-    }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption])
+    }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption, setMatchedAll])
 
     const resetFlipped = () => {
         setFlipped([])
@@ -163,7 +165,8 @@ function Board({ grid, setViewOption, GAME_VIEWS }) {
                     className={`
                         ui centered board 
                         ${getColumnsClassName(grid[0])} cards
-                    `}
+                        ${matchedAll ? 'matched': ''}
+                    `.trim()}
                 >
                     {cards.length > 0 && renderDnynamicBoard(grid)}
                 </div>

@@ -24,3 +24,146 @@ i {
 .board h4{
   margin: 0;
 }
+
+.board.matched .card {
+  -webkit-animation: 2s ease 0s pulse infinite;
+          animation: 2s ease 0s pulse infinite;
+  background: #F2622E;
+  border-radius: 4px;
+}
+
+.board .card:nth-child(1) {
+  -webkit-animation-delay: 0.0555555556s;
+          animation-delay: 0.0555555556s;
+}
+
+.board .card:nth-child(2) {
+  -webkit-animation-delay: 0.1111111111s;
+          animation-delay: 0.1111111111s;
+}
+
+.board .card:nth-child(3) {
+  -webkit-animation-delay: 0.1666666667s;
+          animation-delay: 0.1666666667s;
+}
+
+.board .card:nth-child(4) {
+  -webkit-animation-delay: 0.2222222222s;
+          animation-delay: 0.2222222222s;
+}
+
+.board .card:nth-child(5) {
+  -webkit-animation-delay: 0.2777777778s;
+          animation-delay: 0.2777777778s;
+}
+
+.board .card:nth-child(6) {
+  -webkit-animation-delay: 0.3333333333s;
+          animation-delay: 0.3333333333s;
+}
+
+.board .card:nth-child(7) {
+  -webkit-animation-delay: 0.3888888889s;
+          animation-delay: 0.3888888889s;
+}
+
+.board .card:nth-child(8) {
+  -webkit-animation-delay: 0.4444444444s;
+          animation-delay: 0.4444444444s;
+}
+
+.board .card:nth-child(9) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.board .card:nth-child(10) {
+  -webkit-animation-delay: 0.5555555556s;
+          animation-delay: 0.5555555556s;
+}
+
+.board .card:nth-child(11) {
+  -webkit-animation-delay: 0.6111111111s;
+          animation-delay: 0.6111111111s;
+}
+
+.board .card:nth-child(12) {
+  -webkit-animation-delay: 0.6666666667s;
+          animation-delay: 0.6666666667s;
+}
+
+.board .card:nth-child(13) {
+  -webkit-animation-delay: 0.7222222222s;
+          animation-delay: 0.7222222222s;
+}
+
+.board .card:nth-child(14) {
+  -webkit-animation-delay: 0.7777777778s;
+          animation-delay: 0.7777777778s;
+}
+
+.board .card:nth-child(15) {
+  -webkit-animation-delay: 0.8333333333s;
+          animation-delay: 0.8333333333s;
+}
+
+.board .card:nth-child(16) {
+  -webkit-animation-delay: 0.8888888889s;
+          animation-delay: 0.8888888889s;
+}
+
+.board .card:nth-child(17) {
+  -webkit-animation-delay: 0.9444444444s;
+          animation-delay: 0.9444444444s;
+}
+
+.board .card:nth-child(18) {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.board .card:nth-child(19) {
+  -webkit-animation-delay: 1.0555555556s;
+          animation-delay: 1.0555555556s;
+}
+
+.board .card:nth-child(20) {
+  -webkit-animation-delay: 1.1111111111s;
+          animation-delay: 1.1111111111s;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    background: #F2622E;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    background: #b0b0cb;
+    -webkit-transform: scale(1.015);
+            transform: scale(1.015);
+  }
+  50% {
+    background: #F2622E;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background: #F2622E;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    background: #b0b0cb;
+    -webkit-transform: scale(.015);
+            transform: scale(.015);
+  }
+  50% {
+    background: #F2622E;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
