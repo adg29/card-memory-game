@@ -4,14 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { withRouter } from 'react-router-dom'
 import Card from './../card'
 
-function Board({ grid, setViewOption, GAME_VIEWS, history }) {
-
-    if (!grid) {
-      window.setTimeout(() => {
-        setViewOption(GAME_VIEWS.LOBBY)
-        history.push('/lobby')
-      }, 0)
-    }
+function Board({ grid, setViewOption, GAME_VIEWS, history , gameStats, setGameStats }) {
 
     const [flipped, setFlipped] = useState([])
     const [cards, setCards] = useState([])
@@ -94,8 +87,12 @@ function Board({ grid, setViewOption, GAME_VIEWS, history }) {
         if (matched.length > 0 && matched.length === (grid[0] * grid[1])) {
             setMatchedAll(true)
             setTimeout(() => {
-               setViewOption(GAME_VIEWS.SUMMARY)
-               history.push('/summary')
+                setGameStats({...gameStats,
+                    matchedAll: true,
+                    matched: matched
+                })
+                setViewOption(GAME_VIEWS.SUMMARY)
+                history.push('/summary')
             }, 2000)
         }
     }, [matched, GAME_VIEWS.SUMMARY, grid, setViewOption, setMatchedAll])

@@ -3,6 +3,7 @@ import './App.css'
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
+import Summary from './components/summary'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
@@ -23,6 +24,11 @@ function App({ history }) {
 
   const [viewOption, setViewOption] = useState(GAME_VIEWS.LOBBY)
   const [gridSize, setGridSize] = useState(GRID_SIZES[1])
+  const [gameStats, setGameStats] = useState({
+    matched: null,
+    matchedAll: null,
+    moves: null
+  })
 
   const renderGame = (view) => {
     let toRender
@@ -44,19 +50,19 @@ function App({ history }) {
             grid={gridSize}
             GAME_VIEWS={GAME_VIEWS}
             setViewOption={setViewOption}
+            gameStats={gameStats}
+            setGameStats={setGameStats}
           />
         )
         break
       case GAME_VIEWS.SUMMARY:
       default:
         toRender = (
-          <h2 className="ui icon header">
-            <i className="thumbs up outline icon"></i>
-            <div className="content">
-              Finished!
-              <div className="sub header">You matched all the cards,<br/>Good memory!</div>
-            </div>
-          </h2>        
+          <Summary
+            GAME_VIEWS={GAME_VIEWS}
+            setViewOption={setViewOption}
+            gameStats={gameStats}
+          />
         )
         break
     }
