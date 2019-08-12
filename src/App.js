@@ -1,10 +1,14 @@
 import 'semantic-ui-css/semantic.css';
+import './App.css'
 import React, { useState } from 'react'
 import Options from './components/options'
 import Board from './components/board'
-import './App.css'
+import Summary from './components/summary'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-function App() {
+
+function App({ history }) {
   const GRID_SIZES = [
     [3,4],
     [5,2],
@@ -20,6 +24,11 @@ function App() {
 
   const [viewOption, setViewOption] = useState(GAME_VIEWS.LOBBY)
   const [gridSize, setGridSize] = useState(GRID_SIZES[1])
+  const [gameStats, setGameStats] = useState({
+    matched: null,
+    matchedAll: null,
+    moves: null
+  })
 
   const renderGame = (view) => {
     let toRender
@@ -30,6 +39,7 @@ function App() {
             GRID_SIZES={GRID_SIZES}
             setGridSize={setGridSize}
             GAME_VIEWS={GAME_VIEWS}
+            viewOptions={viewOption}
             setViewOption={setViewOption}
           />
         )
@@ -40,19 +50,19 @@ function App() {
             grid={gridSize}
             GAME_VIEWS={GAME_VIEWS}
             setViewOption={setViewOption}
+            gameStats={gameStats}
+            setGameStats={setGameStats}
           />
         )
         break
       case GAME_VIEWS.SUMMARY:
       default:
         toRender = (
-          <h2 className="ui icon header">
-            <i className="thumbs up outline icon"></i>
-            <div className="content">
-              Finished!
-              <div className="sub header">You matched all the cards,<br/>Good memory!</div>
-            </div>
-          </h2>        
+          <Summary
+            GAME_VIEWS={GAME_VIEWS}
+            setViewOption={setViewOption}
+            gameStats={gameStats}
+          />
         )
         break
     }
@@ -68,7 +78,8 @@ function App() {
               <i
                   className={`huge icon backToLobby`}
                   onClick={() => {
-                      setViewOption(GAME_VIEWS.LOBBY)
+                    setViewOption(GAME_VIEWS.LOBBY)
+                    history.push('/lobby')
                   }}
               ></i>
           )}
@@ -82,9 +93,23 @@ function App() {
         </span>
         </a>
       </div>
-      {renderGame(viewOption)}
+
+
+      <Route exact path="/" render={() => {
+        setViewOption(GAME_VIEWS.LOBBY)
+        return renderGame(GAME_VIEWS.LOBBY) 
+      }} />
+      <Route path="/lobby" render={() => {
+        setViewOption(GAME_VIEWS.LOBBY)
+        return renderGame(GAME_VIEWS.LOBBY) 
+      }} />
+      <Route path="/playing" render={() => {
+        setViewOption(GAME_VIEWS.PLAYING)
+        return renderGame(GAME_VIEWS.PLAYING) 
+      }} />
+      <Route path="/summary" render={() => renderGame(GAME_VIEWS.SUMMARY) } />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App)
